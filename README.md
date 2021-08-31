@@ -9,14 +9,14 @@ This writeup consists of my explorings in creating tangible figures, sentences, 
 
 <br/>
 
-# Generating Frequencies and Forms of Verbs
+# Querying Frequencies and Forms of Verbs
 
 ## Recalculation of Pharr's Verb Frequency Table
 In the preface of *Homeric Greek*, Pharr includes an aggregate table (created by Professor Frank E. Robbins of the University of Michigan) containing frequencies for verb forms. Considering the book was published in 1918, the frequencies were done by hand and came from a small sample size.
 
-Using the Ancient Greek Dependency Treebank (AGDT), I recreated more accurate tables of verb frequencies by authors, their works, as well as an aggregate table. To generate these figures, I used both XQuery and Python (using the ElementTree API).
+Using the Ancient Greek Dependency Treebank (AGDT), I recreated more accurate tables of verb frequencies by authors, their works, as well as an aggregate table. To query for these figures, I used both XQuery and Python (using the ElementTree API).
 
-> The tables comparing Pharr's figures vs my generated figures can be found [**here**](https://docs.google.com/spreadsheets/d/1qGaYBmSPbymfAWAhbouILWmVVnCR3vS3SwANmYWMhJM/edit?usp=sharing).
+> The tables comparing Pharr's figures vs my figures can be found [**here**](https://docs.google.com/spreadsheets/d/1qGaYBmSPbymfAWAhbouILWmVVnCR3vS3SwANmYWMhJM/edit?usp=sharing).
 
 > The tables for other authors (including Homer) in the ADGT can be found [**here**](https://docs.google.com/spreadsheets/d/1QMc367YDlCfRuuwIZYOhZw4ZAEJTqoW8wsmbOngY9Eo/edit?usp=sharing). 
 
@@ -26,7 +26,7 @@ Using the Ancient Greek Dependency Treebank (AGDT), I recreated more accurate ta
 
 <br/>
 
-Because the book is focused on Homeric Greek, I analyzed and compared the frequency tables I generated from the *Iliad* and the *Odyssey* with Pharr's frequency tables. The figures I was able to generate were surprisingly quite different from Pharr's tables, the most significant difference being that in my figures, the thematic aorist indicative active and the thematic imperfect indicative active were the two most common verb forms, while in Pharr's figures, these forms were placed 3rd and 4th in frequency.
+Because the book is focused on Homeric Greek, I analyzed and compared the frequency tables I queried from the *Iliad* and the *Odyssey* with Pharr's frequency tables. The figures I was able to query for were surprisingly quite different from Pharr's tables, the most significant difference being that in my figures, the thematic aorist indicative active and the thematic imperfect indicative active were the two most common verb forms, while in Pharr's figures, these forms were placed 3rd and 4th in frequency.
 
 The differences in the figures are likely present because Pharr's tables contained samples from Euripedes, Herodotus, Demosthenes, Xenophon, as well as Homer, and only 10 pages from each author were included in the samples. In contrast, my sample consisted only of the *Iliad* and the *Odyssey*.
 
@@ -34,14 +34,14 @@ These verb frequencies can be used to decide what forms are most important for s
 
 <br/>
 
-## Generating Verb Forms
-In addition to calculating these frequencies, I used the ElementTree API to write a Python script that generates lists of specified verb forms with details about the form, lemma, citation, etc. More specifically, the script also accounts for specialized verb forms (for example, subjunctives modified by ἄν).
+## Querying for Verb Forms
+In addition to calculating these frequencies, I used the ElementTree API to write a Python script that queries for lists of specified verb forms with details about the form, lemma, citation, etc. More specifically, the script also accounts for specialized verb forms (for example, subjunctives modified by ἄν).
 
 > Example tables summarizing the figures and examples of verb forms can be found [**here**](https://docs.google.com/spreadsheets/d/1hXhT_BvIeOyJbt22DaBieFxKIxjUKBtLXcdct3vV1yw/edit?usp=sharing).
 
 <br/>
 
-# Generating sentences from the *Iliad*
+# Querying for sentences from the *Iliad*
 
 Pharr's focus on immersing students in the first book of *Iliad* as soon as they start is one way to approach introducing new students using ancient texts, but there are other supplemental ways to immerse students using real sentences from the text. In particular, I focused on following Pharr's chapter layouts (which follow the order that grammatical concepts show up in the *Iliad*) and providing additional sentences (also from the *Iliad*) that demonstrate the same concepts explained in his chapters. This way, students will be able to see multiple real sentences from different parts of the *Iliad* that act as examples to the chapter content, without relying on artificial sentences that exist solely to demonstrate grammatical conepts.
 
@@ -94,7 +94,7 @@ One drawback of using networks to view word relationships is that there are usua
 
 The AGDT is represented by sentences organized as trees (hence "Treebank"), but the raw data is difficult to interpret and understand how the words are organized and related. I worked on creating interactive visualizations of these trees using the d3.js package in Javascript. Specifically, I used the TidyTree package from d3 to create visualizations.
 
-The visualization consists of a collapsible tree (laid out horizontally, from left to right), in which you can click nodes to collapse or expand each of their branches, so that students can focus on specific clauses and relations without visual crowding or clutter. Each node is labeled with its form, and each link is labeled with the nodes' relations. Mousing over the node generates a tooltip that provides more details about the node (such as its form, lemma, citation, relation, etc).
+The visualization consists of a collapsible tree (laid out horizontally, from left to right), in which you can click nodes to collapse or expand each of their branches, so that students can focus on specific clauses and relations without visual crowding or clutter. Each node is labeled with its form, and each link is labeled with the nodes' relations. Mousing over the node creates a tooltip that provides more details about the node (such as its form, lemma, citation, relation, etc).
 
 Some things that I had in mind for further development were:
 * highlighting immediate children and parents of the selected node
